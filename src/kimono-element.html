@@ -1,0 +1,99 @@
+<!--
+/**
+* @element kimono-element
+* @homepage index.html
+*/
+/**
+* Element access to APIs created with Kimono for querying results
+* https://www.kimonolabs.com/apidocs#Intro
+*
+* kimono-element is an element for making  queries to
+* kimono APIs and displaying results based on the response
+* returned.
+*
+* Example:
+*
+*     <kimono-element apiid="YOUR-KIMONO-API-ID" apikey="YOUR-KIMONO-USER-API-KEY" results="{{response}}"></kimono-element>
+*     <template repeat="{{item in response.response.collection1}}" index="i"></template>
+*
+* Demo:
+* <a href="/demo.html">Groupon</a>
+*
+*/
+
+-->
+
+<!--
+/**
+*
+* @event kimono-element-load
+*/
+/**
+  Fired after results are loaded
+*/
+-->
+<link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
+
+<polymer-element name="kimono-element" attributes="apiid apikey kimlimit kimoffset results " >
+
+    <template id="">
+
+
+      <polymer-jsonp
+        id="base"
+        response="{{results}}" auto
+        url="https://www.kimonolabs.com/api/{{apiid}}?apikey={{apikey}}&kimoffset={{kimoffset}}&kimlimit={{kimlimit}}&callback="
+         params='{"crossDomain":"true", "dataType":"jsonp"}' >
+         </polymer-jsonp>
+    </template>
+    <script>
+        Polymer('kimono-element', {
+          /**
+          * Limits the number of result rows returned by the API call.
+          *
+          * @attribute kimlimit
+          * @type integer
+          * @default 500
+          */
+          kimlimit: 500,
+
+          /**
+          * The api ID used to identifiy the Kimono API being called
+          *
+          * @attribute apiid
+          * @type string
+          * @default null
+          */
+          kimoffset: 0,
+
+
+          /**
+          * Offset results returned to begin from a row other than the first.
+          *
+          * @attribute kimoffset
+          * @type integer
+          * @default 0
+          */
+          apiid: null,
+
+          /**
+          * The api KEY used to identifiy the Kimono user making call
+          *
+          * @attribute apiKey
+          * @type string
+          * @default null
+          */
+          apiKey: null,
+          results: [],
+            ready: function() {
+              this.$.base.addEventListener('polymer-response',
+              function (e) {
+                this.results = {response: e.detail.response.results};
+                this.fire('kimono-element-load', {response: e.detail.response.results});
+              }.bind(this)
+            );
+            }
+        });
+    </script>
+
+</polymer-element>
