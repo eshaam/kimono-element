@@ -1,0 +1,26 @@
+{
+    "name": "kimono-element",
+    "version": "0.0.1",
+    "description": "A Polymer element for querying the APIs created with Kimono",
+    "license": "MIT",
+    "main": "dist/kimono-element.html",
+    "authors": [
+      "Eshaam Rabaney <eshaam.rabaney@gmail.com>"
+    ],
+    "keywords": [
+        "polymer",
+        "web-components",
+        "kimono"
+    ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "polymer": "Polymer/polymer#^0.5.2",
+        "polymer-jsonp": "Polymer/polymer-jsonp#>=0.3.0",
+        "core-elements": "Polymer/core-elements#^0.5.2"
+
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>&lt;kimono-element&gt;</title>
+
+  <!-- Importing Web Component's Polyfill -->
+  <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+  <!-- Importing Custom Elements -->
+  <link rel="import" href="bower_components/polymer/polymer.html">
+
+  <link rel="import" href="src/kimono-element.html">
+
+  <style>
+  body {
+    padding:2em 6em;
+  }
+  .item {
+    width: 33%;
+    float: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  .item img {
+    float: left;
+    width: 100%;
+
+  }
+  </style>
+</head>
+<body unresolved >
+
+  <h1><a href="https://github.com/eshaam/kimono-element">&lt;kimono-element&gt;</a></h1>
+  <h2>A Polymer element for querying APIs created with Kimono <a href="https://www.kimonolabs.com/">https://www.kimonolabs.com/</a></h2>
+
+  <hr>
+  <h3>Display a list of 500 Groupon Deals scraped from their website with Kimono</h3>
+
+
+
+  <template is="auto-binding">
+    <kimono-element apiid="cp670nq6" apikey="9dIwsUkWscjQqX9YiuOykNhsoUmLLevb" results="{{response}}"></kimono-element>
+
+      <template repeat="{{item in response.response.collection1}}" index="i">
+
+
+        <div class="item">
+            <a href="{{item.url}}" target="_blank"><h4>{{item.name}}</h4></a>
+            <div class="item">
+              <a href="{{item.url}}" target="_blank" target="_blank">
+                <img src="{{item.image}}">
+              </a>
+            </div>
+            <p>
+              {{item.description}}
+            </p>
+            <p>
+              <small>Country:{{item.country}}</small>
+            </p>
+        </div>
+
+
+      </template>
+
+  </template>
+
+
+</body>
+
+
+
+
+</body>
+</html>
