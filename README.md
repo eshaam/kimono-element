@@ -4,7 +4,7 @@ A [Polymer](http://polymer-project.org) element for querying results from apis c
 
 ## Demo
 
-[Check it live!](http://eshaam.github.io/kimono-element/demo.html)
+[Check it live!](http://eshaam.github.io/kimono-element/src/demo.html)
 [Check docs](http://eshaam.github.io/kimono-element)
 
 ## Install
